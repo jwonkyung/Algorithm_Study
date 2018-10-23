@@ -16,11 +16,11 @@ void getbinary(int m,int p){
 		return;
 	}
 	
-	//1·Î ½ÃÀÛ
+	//1ë¡œ ì‹œì‘
 	str[m+1]=1;
 	getbinary(m+1,p-1);
 	
-	//0À¸·Î ½ÃÀÛ 
+	//0
 	str[m+1]=0;
 	getbinary(m+1,p);	
 }
