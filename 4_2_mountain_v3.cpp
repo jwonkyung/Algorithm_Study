@@ -1,5 +1,5 @@
 //4_2_mountain 
-// ÂüÁ¶: https://github.com/sungjk/algorithm/blob/master/src/pTp.cpp
+// ì°¸ì¡°: https://github.com/sungjk/algorithm/blob/master/src/pTp.cpp
 
 #include <iostream>
 #include <stdio.h> 
