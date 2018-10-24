@@ -1,4 +1,4 @@
-//6_1 DFS & BFS ±¸ÇöÇÏ±â -¿ø°æ 
+//6_1 DFS & BFS êµ¬í˜„í•˜ê¸°
 
 #include <stdio.h> 
 #include <vector>
@@ -12,16 +12,16 @@
 using namespace std;
 int n,m;//n=node#, v=edge#
 
-vector<int> graph[NODE_MAX];//n°³ÀÇ ¹è¿­À» °¡Áø vector »ı¼º
-bool visited_DFS[NODE_MAX]={0,};//±âº» false 
+vector<int> graph[NODE_MAX];//nê°œì˜ ë°°ì—´ì„ ê°€ì§„ vector ìƒì„±
+bool visited_DFS[NODE_MAX]={0,};//ê¸°ë³¸ false 
 
 void DFS(int s){
-	//stop signalµû·Î ¾øÀ½??¤·¤· 
+	//stop signalë”°ë¡œ ì—†ìŒ??ã…‡ã…‡ 
 	
-	visited_DFS[s]=true;//1. s_node¹æ¹® Ã³¸®
+	visited_DFS[s]=true;//1. s_nodeë°©ë¬¸ ì²˜ë¦¬
 	printf("%d ",s); 
 	
-	for(int i=0;i<graph[s].size();i++){//s¿Í ÀÎÁ¢ ³ëµåµé ¼øÈ¸
+	for(int i=0;i<graph[s].size();i++){//sì™€ ì¸ì ‘ ë…¸ë“œë“¤ ìˆœíšŒ
 		int temp=graph[s][i]; 
 		if(visited_DFS[temp]==false){
 			DFS(temp);
@@ -33,7 +33,7 @@ void BFS(){
 	//initialization
 	bool visited_BFS[NODE_MAX]={0,};
 	queue<int> q;
-	//Queue »ç¿ë¹ı
+	//Queue ì‚¬ìš©ë²•
 	//: q.push(x); q.pop(); q.front(); q.empty(); 
 	
 	// 1. push Q start node
@@ -41,18 +41,18 @@ void BFS(){
 	visited_BFS[0]=true;
 	printf("0 ");
 		
-	//2.Q ¸Ç¾Õpop & ¹æ¹®X³ëµå´Â->ÀÎÁ¢ ³ëµå push
+	//2.Q ë§¨ì•pop & ë°©ë¬¸Xë…¸ë“œëŠ”->ì¸ì ‘ ë…¸ë“œ push
 	while(!q.empty()){		
 		//current node: pop 
 		int node=q.front();
 		q.pop();
 		
-		//current ÀÎÁ¢ ³ëµå: ¹æ¹®X-->push 
+		//current ì¸ì ‘ ë…¸ë“œ: ë°©ë¬¸X-->push 
 		for(int i=0;i<graph[node].size();i++){
 			int temp=graph[node][i];
 			if (visited_BFS[temp]==false){
 				q.push(temp);
-				visited_BFS[temp]=true;	////ÀÌ¶§ Ã¼Å©ÇØ¾ßÇÔ!!! 
+				visited_BFS[temp]=true;	////ì´ë•Œ ì²´í¬í•´ì•¼í•¨!!! 
 				printf("%d ",temp);
 			}
 		}
@@ -66,25 +66,25 @@ int main(){
 	if (n>NODE_MAX||m>EDGE_MAX||n<0||m<0) return 0;
 	
 	//create graph			
-	for(int i=0;i<m;i++){//edge°³¼ö¸¸Å­ 
+	for(int i=0;i<m;i++){//edgeê°œìˆ˜ë§Œí¼ 
 		int a,b;
 		scanf("%d %d",&a,&b);
-		//a-b ¿¬°á
+		//a-b ì—°ê²°
 		graph[a].push_back(b);
 		graph[b].push_back(a);		
 	}	
 	
-	//vector ³ëµå ÀÛÀº ¼ø¼­´ë·Î Á¤·Ä <---¿¡·¯ ÄÉÀÌ½º Á¶½É! 
+	//vector ë…¸ë“œ ì‘ì€ ìˆœì„œëŒ€ë¡œ ì •ë ¬ <---ì—ëŸ¬ ì¼€ì´ìŠ¤ ì¡°ì‹¬! 
 	for(int i=0;i<n;i++){
 	 sort(graph[i].begin(), graph[i].end());
 	}	
 	
 	system("cls");
 	//DFS
-	DFS(0);//node0ºÎÅÍ ½ÃÀÛ 
+	DFS(0);//node0ë¶€í„° ì‹œì‘ 
 	printf("\n");
 	//BFS
-	BFS();//node1ºÎÅÍ ½ÃÀÛ 
+	BFS();//node1ë¶€í„° ì‹œì‘ 
 	
 	return 0;
 }
