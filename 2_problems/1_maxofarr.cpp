@@ -29,3 +29,45 @@
 90
 5 7
 */
+
+#include <iostream>
+#include <cstdlib>
+ 
+using namespace std;
+ 
+#define H 9
+#define W 9
+ 
+int main()
+{
+    int max=0;
+    int row,col;
+    
+    int** array=new int*[H];
+    for (int i=0;i<H;i++) array[i]=new int[W];
+    
+    for (int h=0;h<H;h++){
+        for (int w=0;w<W;w++){
+            cin>>array[h][w];
+            if (array[h][w]<0||array[h][w]>100){
+                return 0;
+            }
+        }
+    }
+    
+    // find max
+    for (int h=0;h<H;h++){
+        for (int w=0;w<W;w++){
+            if (array[h][w]>max){
+                max=array[h][w];
+                row=h;
+                col=w;
+            }
+        }
+    }
+    system("cls");
+    cout<<max<<endl;
+    cout<<row+1<<" "<<col+1;
+    
+    return 0;
+}
