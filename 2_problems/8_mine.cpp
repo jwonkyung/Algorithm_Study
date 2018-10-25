@@ -44,3 +44,59 @@
 (예제 출력)
 game over
 */
+
+#include <iostream>
+#include <cstdlib>
+ 
+using namespace std;
+ 
+int main()
+{    
+    int N,M,X,Y;
+    cin>>N>>M>>X>>Y;
+    if(N>=5&N<=100&M>=5&M<=100&X>=1&X<=N&Y>=1&Y<=M)
+    {
+        //create map(NxM)
+        int** map=new int*[N+2];
+        for (int i=0;i<N+2;i++) map[i]=new int[M+2];
+            
+        //zero padding
+        for (int n=0;n<N+2;n++) {
+            for (int m=0;m<M+2;m++) {
+                map[n][m]=0;
+            }
+        }
+        
+        //input - map
+        for (int n=1;n<N+1;n++) {
+            for (int m=1;m<M+1;m++) {
+                cin>>map[n][m];
+            }
+        }
+        system("cls");
+        //count mine
+        int mine=0;
+        bool game_over=false;
+        for (int n=X-1;n<=X+1;n++) {
+            for (int m=Y-1;m<=Y+1;m++) {
+                if(n==X & m==Y) {
+                    if(map[n][m]==1) {
+                        game_over=true;
+                        cout<<"game over";
+                        return 0;
+                        }
+                }
+                else{
+                    if(map[n][m]==1) mine++;
+                }
+                
+            }
+        }
+        cout<<mine;
+        return 0;
+    }
+    else{
+        return 0;
+    }
+ 
+}
