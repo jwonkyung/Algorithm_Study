@@ -19,3 +19,57 @@ N과 M은 100 이하의 자연수이다. 둘째줄부터 N개의 줄에 걸쳐, 
 0 8 8 
 8 0 0
 */
+#include <cstdlib> //system("cls")
+#include <iostream>
+#include <stdio.h>
+ 
+using namespace std;
+ 
+int main()
+{
+ 
+    int N;
+    int M;
+ 
+    cin>>N>>M;
+    
+    int confirm_num=0;
+    
+    int** ary=new int*[N];
+    for (int i=0;i<N;++i) ary[i]=new int[M];
+    
+    int** flipary=new int*[N];
+    for (int i=0;i<N;++i) flipary[i]=new int[M];
+    
+    
+    for (int n=0;n<N;++n){
+        for(int m=0;m<M;++m){
+            cin>>ary[n][m];
+            if (ary[n][m]==0 || ary[n][m]==8){
+                confirm_num+=1;
+            }
+        }
+    }
+    
+//    //confirm
+//    for (int n=0;n<N;++n){
+//        for(int m=0;m<M;++m){
+//            cout<<ary[n][m];
+//        }
+//    }
+ 
+    system("cls");
+    if (confirm_num==N*M & N<=100 & M<=100 & N>0 & M>0){
+    //flip array
+    for (int n=0;n<N;++n){
+        for(int m=0;m<M;++m){
+            flipary[n][m]=ary[n][M-m-1];
+            cout<<flipary[n][m]<<" ";
+        }
+        cout<<endl;
+    }
+    }
+    
+    
+    return 0;
+}
