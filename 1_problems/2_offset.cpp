@@ -20,3 +20,68 @@
 * 7 2 * 4 
 
 */
+#include <cstdlib> //system("cls")
+#include <iostream>
+#include <stdio.h>
+ 
+using namespace std;
+ 
+int main()
+{
+    int number[25];    
+    bool ok=true;
+    int W=5;
+    int H=5;    
+ 
+    int** ary=new int*[W+2];
+    for (int i=0;i<W+2;++i) ary[i]=new int[H+1];
+    
+    //initialize with 1000
+    for (int h=0;h<H+2;++h){
+        for (int w=0;w<W+2;++w){
+            ary[h][w]=1000;
+        }
+    }
+    
+    for (int h=1;h<=5;++h){
+        for (int w=1;w<=5;++w){
+            cin>>ary[h][w];
+                        
+            if (ary[h][w]>10 || ary[h][w]<0) ok=false;
+                
+        }
+    }
+    
+//    for (int h=0;h<H+2;++h){
+//        for (int w=0;w<W+2;++w){
+//            cout<<ary[h][w]<<" ";
+//        }
+//        cout<<endl;
+//    }
+    
+ 
+    if (ok){
+        system("cls");
+        for (int h=1;h<=H;++h){
+            for (int w=1;w<=W;++w){
+            
+            int current=ary[h][w];
+            int left=ary[h][w-1];
+            int right=ary[h][w+1];
+            int under=ary[h+1][w];
+            int up=ary[h-1][w];
+            
+            if (current<left & current<right & current<under & current<up){
+                cout<<"*"<<" ";
+            
+            }
+            else{
+                cout<<ary[h][w]<<" ";
+            }
+        }
+        cout<<endl;
+        }
+    }
+    
+    return 0;
+}
